@@ -1,5 +1,6 @@
 package dev.carlos.api_viagens.entities.dto.response;
 
+import dev.carlos.api_viagens.entities.Destino;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

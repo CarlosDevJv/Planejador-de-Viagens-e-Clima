@@ -22,7 +22,7 @@ public class CoordenadaService {
     public List<CoordenadaRequest> buscarCoordenadas(Destino destino) throws IOException, InterruptedException {
         HttpClient client1 = HttpClient.newHttpClient();
         HttpRequest request1 = HttpRequest.newBuilder()
-                .uri(URI.create(urlCoordenadas(destino.getLocalidade(), destino.getEstado())))
+                .uri(URI.create(urlCoordenadas(destino.getLocalidade().replace(" ", ""), destino.getEstado().replace(" ", ""))))
                 .build();
         ObjectMapper mapper = new ObjectMapper();
         HttpResponse<String> response1 = client1.send(request1, HttpResponse.BodyHandlers.ofString());
@@ -30,6 +30,6 @@ public class CoordenadaService {
     }
 
     public String urlCoordenadas(String cidade, String estado){
-        return String.format(Locale.US, coordendas, cidade, estado);
+        return String.format(Locale.US, coordendas, cidade.replace(" ", ""), estado.replace(" ", ""));
     }
 }

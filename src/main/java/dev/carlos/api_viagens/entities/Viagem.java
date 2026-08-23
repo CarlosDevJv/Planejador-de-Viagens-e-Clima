@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,8 +20,8 @@ public class Viagem {
     private String id;
     private String titulo;
     private String descricao;
-    private LocalDateTime dataInicio;
-    private LocalDateTime dataFim;
+    private LocalDate dataInicio;
+    private LocalDate dataFim;
 //    @ManyToOne
 //    @JoinColumn(name = "contratante")
 //    private User contratante;

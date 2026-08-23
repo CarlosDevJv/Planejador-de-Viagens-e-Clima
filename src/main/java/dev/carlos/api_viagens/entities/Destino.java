@@ -1,12 +1,14 @@
 package dev.carlos.api_viagens.entities;
 
+import dev.carlos.api_viagens.entities.dto.response.ClimaMasterResponse;
+import dev.carlos.api_viagens.service.ClimaService;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,15 +26,10 @@ public class Destino {
     private String localidade;
     private String estado;
     private String logradouro;
-    private String bairro;
-    private LocalDateTime dataInicio;
-    private LocalDateTime dataFim;
-
+    @Transient
+    private ClimaMasterResponse climaMasterResponse;
     @OneToMany(mappedBy = "destino")
     private Set<Viagem> viagens = new HashSet<>();
 
-    @Override
-    public String toString(){
-        return getLocalidade() + getLogradouro() + getEstado() + getCep();
-    }
+
 }
