@@ -18,11 +18,8 @@ public class UserController {
 
     @PostMapping("/criarUsuario")
     public ResponseEntity<?> criarUsuario(@RequestBody CriarUserRequest userRequest){
-        try {
             userService.criarUsuario(userRequest);
             return ResponseEntity.ok().build();
-        } catch (RuntimeException runtimeException) {
-            return ResponseEntity.badRequest().body("Usuário Já cadastrado");
-        }
+
     }
 }

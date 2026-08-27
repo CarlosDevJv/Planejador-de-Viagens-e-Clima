@@ -1,5 +1,6 @@
 package dev.carlos.api_viagens.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.util.Set;
 @Entity
 @Setter
 @Getter
-@Table(name = "tb_users")
+@Table(name = "users")
 public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
@@ -23,9 +24,8 @@ public class User {
     private String nome;
     private String email;
     private LocalDateTime dataCadastro;
-
-//    @OneToMany(mappedBy = "contratante")
-//    private Set<Viagem> viagens = new HashSet<>();
+    @OneToMany(mappedBy = "contratante")
+    private Set<Viagem> viagens = new HashSet<>();
 
 
 }

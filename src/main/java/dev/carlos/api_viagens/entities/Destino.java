@@ -1,5 +1,6 @@
 package dev.carlos.api_viagens.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.carlos.api_viagens.entities.dto.response.ClimaMasterResponse;
 import dev.carlos.api_viagens.service.ClimaService;
 import jakarta.persistence.*;
@@ -17,7 +18,7 @@ import java.util.Set;
 @Entity
 @Setter
 @Getter
-@Table(name = "tb_destino")
+@Table(name = "destino")
 public class Destino {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
@@ -25,11 +26,15 @@ public class Destino {
     private String cep;
     private String localidade;
     private String estado;
-    private String logradouro;
     @Transient
     private ClimaMasterResponse climaMasterResponse;
+    @JsonIgnore
     @OneToMany(mappedBy = "destino")
     private Set<Viagem> viagens = new HashSet<>();
+
+    public String getCep(){
+        return cep.replace("-", "");
+    }
 
 
 }

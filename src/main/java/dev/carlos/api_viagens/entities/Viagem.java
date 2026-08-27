@@ -1,5 +1,6 @@
 package dev.carlos.api_viagens.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @Entity
-@Table(name = "tb_viagem")
+@Table(name = "viagem")
 public class Viagem {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
@@ -22,9 +23,10 @@ public class Viagem {
     private String descricao;
     private LocalDate dataInicio;
     private LocalDate dataFim;
-//    @ManyToOne
-//    @JoinColumn(name = "contratante")
-//    private User contratante;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "contratante")
+    private User contratante;
     @ManyToOne
     @JoinColumn(name = "destino")
     private Destino destino;

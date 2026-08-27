@@ -1,0 +1,6 @@
+CREATE TABLE destino(
+    id VARCHAR(150) PRIMARY KEY,
+    cep VARCHAR(20) NOT NULL,
+    localidade VARCHAR(50) NOT NULL,
+    estado VARCHAR(40) NOT NULL
+)
